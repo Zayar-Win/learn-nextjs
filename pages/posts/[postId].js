@@ -1,6 +1,13 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const PostDetail = ({ post }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    //if you set fallback to true u should check fallback to show loading indicator
+    return <h1>Loading...</h1>; //if you set fallback to true ur route is don't have in pre-render pages
+    //it will not show to 404 page it will fetch data with fallback serve
+  }
   return (
     <>
       <h1>Post {post.id} Detail</h1>
@@ -18,6 +25,12 @@ export const getStaticProps = async (context) => {
     `https://jsonplaceholder.typicode.com/posts/${params.postId}`
   );
   const data = await result.json();
+  if (!data.id) {
+    //to show 404 page when fallback is true
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -40,6 +53,6 @@ export const getStaticPaths = async () => {
         },
       };
     }),
-    fallback: false,
+    fallback: true,
   };
 };
