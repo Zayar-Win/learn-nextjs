@@ -6,7 +6,7 @@ const About = () => {
 
 export default About;
 
-About.editLayout = function pageLayout(page) {
+About.getLayout = function pageLayout(page) {
   return (
     <>
       {page}

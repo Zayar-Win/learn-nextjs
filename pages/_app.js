@@ -3,8 +3,8 @@ import Header from "../components/Header";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  if (Component.editLayout) {
-    return Component.editLayout(
+  if (Component.getLayout) {
+    return Component.getLayout(
       <Component {...pageProps} />
     );
   }
