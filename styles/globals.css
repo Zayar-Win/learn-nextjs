@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.header-layout {
+  background-color: red;
+  color: white;
+  height: 50px;
+  text-align: center;
+}
+.footer-layout {
+  background-color: green;
+  color: white;
+  height: 50px;
+  text-align: center;
+}
