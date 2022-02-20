@@ -1,19 +1,14 @@
-import Footer from "@/layout/Footer";
-import Header from "@/layout/Header";
-import "styles/globals.css";
+import "../styles/globals.css";
+import Navbar from "../components/Navbar";
+import "../components/Navbar.css";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }) {
-  if (Component.getLayout) {
-    return Component.getLayout(
-      <Component {...pageProps} />
-    );
-  }
   return (
-    <>
-      <Header />
+    <SessionProvider>
+      <Navbar />
       <Component {...pageProps} />
-      <Footer />
-    </>
+    </SessionProvider>
   );
 }
 
